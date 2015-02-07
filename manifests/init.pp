@@ -30,7 +30,4 @@ class kannel (
    
    
  }
-  class kannel {
-        include  kannel::service, kannel::params
-         Class['kannel::params'] -> Class['kannel::service']
-}
+
