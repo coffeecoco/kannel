@@ -1,3 +1,3 @@
 # kannel_smpp #
 
-This is the kannel_smpp module. It provides...
+This is the kannel_smpp module.
