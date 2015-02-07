@@ -1,0 +1,70 @@
+# CORE
+group = core
+admin-port = <%= kannel_admin_port %>
+admin-password = <%= kannel_admin_pwd %>
+status-password = <%= sms_stat_pwd %>
+box-allow-ip = "*.*.*.*"
+box-deny-ip = "1.1.1.1"
+access-log-format = "%l [SMSC:%i] [SVC:%n][ACT:%A] [BINF:%B][from:%p] [to:%P][flags:%m:%c:%M:%C:%d][msg:%L **REDACTED**] [udh:%U:%u]"
+log-file = "/app/kannel-smpp/log/bearerbox_server.log"
+log-level = 0
+access-log = "/app/kannel-smpp/log/bearerbox_access.log"
+store-type = spool
+store-location = "/app/kannel-smpp/var/bearerbox_server"
+smsbox-max-pending = 100
+dlr-storage = internal
+
+# ----------------------------------------------------------------------
+# This sends HTTP to HUB
+# ----------------------------------------------------------------------
+group = smsc
+smsc = http
+smsc-id = "http_forwarder_01"
+system-type = generic
+smsc-username = <%= hub_username %>
+smsc-password = <%= hub_password %> 
+# port that the http smsc is listening to for incomin DLRs and SMSs
+port = <%= hub_listen_port %> 
+connect-allow-ip = "*.*.*.*"
+# URL to hit for outgoing messages via HTTP
+send-url = "http://<%= hub_http_address %>:8080/smpp/inbound?udh=%u&sender=%p&body=%a&receiver=%P&fromSmsc=%i&smppUser=%n&toSmsc=%f&smsId=%I&createdTime=%t&smsType=%d&metaData=%D&refId=%F&billing=%B&dlrurl=kannel64.dev1.whispir.net:1301$
+status-success-regex = "ccepted"
+reroute-dlr = true
+transceiver-mode = true
+
+# unused but required by bearerbox as at least one of wapbox or smsbox needs to run
+group = smsbox
+bearerbox-host = 127.0.0.1
+sendsms-port = <%= sendsms_port %>
+global-sender = <%= sendsms_port %>
+log-file = "/app/kannel/log/smsbox_smpp_server.log"
+log-level = 0
+access-log = "/app/kannel/log/smsbox_smpp_access.log"
+
+# routing from smpp to the HTTP forwarder
+group = smsbox-route
+smsbox-id = "smpp_listener"
+smsc-id = "http_forwarder_01"
+
+
+group = redis-connection
+id = redisdlr
+host = <%= redis_ip %>
+port = <%= redis_port %>
+#password = foo
+database = 0
+max-connections = 1
+
+group = dlr-db
+id = redisdlr
+table = dlr
+ttl = 1
+field-smsc = smsc
+field-timestamp = ts
+field-destination = destination
+field-source = source
+field-service = service
+field-url = url
+field-mask = mask
+field-status = status
+field-boxc-id = boxc
