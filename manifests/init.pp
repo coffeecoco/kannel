@@ -12,6 +12,6 @@
 #
 
   class kannel {
-        include kannel::install, kannel::config, kannel::service
-        Class['base'] -> Class['kannel::install'] -> Class['kannel::config'] -> Class['kannel::service']
+        include kannel::install, kannel::vars, kannel::service
+        Class['base'] -> Class['kannel::install'] -> Class['kannel::vars'] -> Class['kannel::service']
 }
