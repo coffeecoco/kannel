@@ -12,12 +12,12 @@ access-log = "/app/kannel-<%= customer %>/log/bearerbox/bearerbox_access.log"
 #store-type = spool
 #store-location = "/app/kannel-<%= customer %>/var/bearerbox_server"
 smsbox-max-pending = 100
-dlr-storage = <%= dlr-storage %>
+dlr-storage = <%= dlr_storage %>
 
 # http smsc config - pushes messages coming from smpp to http (message hub) and also receives back DLRs and messages from message hub via Http in
 group = smsc
 smsc = http
-smsc-id = "http_forwarder_01"
+smsc-id = "forwarder_01"
 system-type = generic
 smsc-username = <%= smsc_username %>
 smsc-password = <%= smsc_password %>

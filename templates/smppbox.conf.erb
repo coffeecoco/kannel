@@ -1,6 +1,6 @@
 
 # bearerbox (upstream) master config
-include = "/app/kannel-smpp/etc/box.conf"
+include = "/app/kannel-<%= customer %>/etc/box.conf"
 
 # main smppbox config
 group = smppbox
@@ -9,7 +9,7 @@ admin-allow-ip = "*.*.*.*"
 admin-port = <%= smpp_admin_port %>
 admin-password = <%= smpp_admin_pwd %>
 status-password = <%= smpp_admin_pwd %>
-default-smsc = "http_forwarder_01"
+default-smsc = "forwarder_01"
 bearerbox-host = 127.0.0.1
 bearerbox-dcs = utf-8
 # port for incoming SMSC connections
@@ -20,19 +20,19 @@ ssl-server-cert-file = "<%= ssl_cert_file %>"
 ssl-server-key-file = "<%= ssl_cert_key %>"
 system-id = "<%= smpp_systemid %>"
 access-log-format = "%l [SMSC:%i] [SVC:%n][ACT:%A] [BINF:%B][from:%p] [to:%P][flags:%m:%c:%M:%C:%d][msg:%L **REDACTED**] [udh:%U:%u]"
-log-file = "/app/kannel-smpp/log/smppbox_server.log"
+log-file = "/app/kannel-<%= customer %>/log/smppbox_server.log"
 log-level = 1
-access-log = "/app/kannel-smpp/log/smppbox_access.log"
+access-log = "/app/kannel-<%= customer %>/log/smppbox_access.log"
 store-type = spool
-store-location = "/app/kannel-smpp/var/smppbox"
+store-location = "/app/kannel-<%= customer %>/var/smppbox"
 
 # license for smppbox
 group = license
-public-key = /app/kannel-smpp_01/var/license_public.pem
-license-key = /app/kannel-smpp_01/var/smppbox.licenseV2
+public-key = /app/kannel-<%= customer %>/var/license_public.pem
+license-key = /app/kannel-<%= customer %>/var/smppbox.licenseV2
 license-version = 2
 username = whispir
 password = SMPPb0xvv1561
 
 # user directory include
-include = "/app/kannel-smpp_01/etc/users.d/"
+include = "/app/kannel-<%= customer %>/etc/users.d/"
