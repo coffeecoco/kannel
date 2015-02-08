@@ -39,6 +39,7 @@
   $ssl_cert_key =  "/app/kannel-<%= customer %>/etc/wildcard.dev1.whispir.net.clear.pem",
   $smpp_systemid = smpp_listener_01,
 )
+
 {
 
 file { "/app/kannel-smpp/":
@@ -76,5 +77,6 @@ class backend {
 package {'curl': }
 package {'nano': }
 }
-}
-   
+
+ notice "init"
+ }  
