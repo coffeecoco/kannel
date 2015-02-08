@@ -10,7 +10,7 @@ class kannel::params(
   $smpp_admin_port = "13014",
   $smpp_admin_pwd = "foobar",
   $smppbox_port = "13015",
-  $smsbox_port = 15000,
+  $smsbox_port = "15000",
   $smppbox_ssl = true,
   $ssl_cert_file = "/app/kannel-test1/etc/wildcard.dev1.whispir.net.crt",
   $ssl_cert_key =  "/app/kannel-test1/etc/wildcard.dev1.whispir.net.clear.pem",
