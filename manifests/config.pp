@@ -32,6 +32,7 @@ class kannel::config(
 
 file { '/app/kannel-smpp/kannel.conf':
     content => template('kannel/kannel.conf.erb'),
+    ensure  => file,
     owner => 'root',
     group => 'root',
     mode  => '0644',
@@ -50,6 +51,7 @@ file { '/app/kannel-smpp/kannel.conf':
   }
    file { '/app/kannel-smpp/smppbox.conf':
     content => template('kannel/smppbox.conf.erb'),
+    ensure  => file,
     owner => 'root',
     group => 'root',
     mode  => '0644',
