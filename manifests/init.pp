@@ -21,6 +21,7 @@
   $redis_host = "10.50.50.197",
   $redis_port = "6666",
   $kannel_admin_port = "13010",
+  $kannel_smsbox_port = "1002",
   $kannel_admin_pwd = "foobar",
   $sms_stat_pwd = foobar,
   $hub_listen_port = 13012,
