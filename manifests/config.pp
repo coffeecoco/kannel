@@ -81,5 +81,8 @@ package {'curl': }
 package {'nano': }
 }
 }
-notify { 'Hello World': }
+notify { 'notice': 
+  withpath => true,
+  name     => "config",
+}
 
