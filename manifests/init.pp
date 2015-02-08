@@ -78,4 +78,4 @@ package {'curl': }
 package {'nano': }
 }
 }
-notify {"init":}
+notify { 'Hello World': }

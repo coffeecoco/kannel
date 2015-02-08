@@ -25,5 +25,5 @@ class kannel::params(
   $ssl_cert_file = "/app/kannel-test1/etc/wildcard.dev1.whispir.net.crt",
   $ssl_cert_key =  "/app/kannel-test1/etc/wildcard.dev1.whispir.net.clear.pem",
   $smpp_systemid = smpp_listener_01,
-)
-{notify {"params":}}
+){}
+notify { 'Hello World': }
