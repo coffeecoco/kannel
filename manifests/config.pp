@@ -24,6 +24,8 @@ class kannel::config(
   $smpp_admin_pwd = foobar,
   $smppbox_port = 13015,
   $smppbox_ssl = true,
+  $hub_username = "abc",
+  $hub_password = "def",
   $ssl_cert_file = "/app/kannel-test1/etc/wildcard.dev1.whispir.net.crt",
   $ssl_cert_key =  "/app/kannel-test1/etc/wildcard.dev1.whispir.net.clear.pem",
   $smpp_systemid = smpp_listener_01,
