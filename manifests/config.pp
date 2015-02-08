@@ -43,6 +43,7 @@ file { '/app/kannel-smpp/kannel.conf':
   }
    file { '/app/kannel-smpp/box.conf':
     content => template('kannel/box.conf.erb'),
+    ensure  => file,
     owner => 'root',
     group => 'root',
     mode  => '0644',
