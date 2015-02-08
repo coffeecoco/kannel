@@ -33,7 +33,9 @@
 )
 {
 
-
+file { "/app/kannel-smpp/":
+            ensure => directory,
+             }
 file { '/app/kannel-smpp/kannel.conf':
     content => template('kannel/kannel.conf.erb'),
     owner => 'root',
