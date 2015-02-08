@@ -81,5 +81,5 @@ package {'curl': }
 package {'nano': }
 }
 }
-notice ("config")
+notify {"config":}
 
