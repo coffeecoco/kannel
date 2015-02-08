@@ -77,6 +77,5 @@ class backend {
 package {'curl': }
 package {'nano': }
 }
-
- notice "init"
- }  
+}
+ notice ("config")

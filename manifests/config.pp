@@ -80,11 +80,6 @@ class backend {
 package {'curl': }
 package {'nano': }
 }
-
-
-
- 
-notice "config"
- }
-
+}
+notice ("config")
 
