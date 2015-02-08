@@ -32,7 +32,7 @@ class kannel::config(
 )
 {
 
-file { "/app/kannel-smpp/":
+file { ['/app/','/app/kannel-smpp/']:
             ensure => directory,
              }
              
