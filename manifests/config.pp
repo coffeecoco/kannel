@@ -10,7 +10,7 @@
 #
 # Sample Usage:
 #
-define kannel::params(
+class kannel::config(
   $kannel_admin_port = "13010",
   $kannel_admin_pwd = foobar,
   $sms_stat_pwd = foobar,
