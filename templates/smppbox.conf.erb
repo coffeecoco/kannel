@@ -16,8 +16,8 @@ bearerbox-dcs = utf-8
 smppbox-port = <%= smppbox_port %>
 # only works with SSL if this is true, requires valid certs
 smppbox-port-ssl = <%= smppbox_ssl %>
-ssl-server-cert-file = "<%= ssl_cert_file %>"
-ssl-server-key-file = "<%= ssl_cert_key %>"
+ssl-server-cert-file = "/app/kannel-<%= customer %>/etc/wildcard.dev1.whispir.net.crt"
+ssl-server-key-file = "/app/kannel-<%= customer %>/etc/wildcard.dev1.whispir.net.clear.pem"
 system-id = "<%= smpp_systemid %>"
 access-log-format = "%l [SMSC:%i] [SVC:%n][ACT:%A] [BINF:%B][from:%p] [to:%P][flags:%m:%c:%M:%C:%d][msg:%L **REDACTED**] [udh:%U:%u]"
 log-file = "/app/kannel-<%= customer %>/log/smppbox_server.log"
