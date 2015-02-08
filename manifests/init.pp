@@ -20,6 +20,7 @@
   $sendsms_port = 13013,
   $redis_ip = "10.1.161.95",
   $redis_port = 6666,
+  $smsbox_port = "15000",
   $smpp_admin_port = 13014,
   $smpp_admin_pwd = foobar,
   $smppbox_port = 13015,
@@ -36,27 +37,18 @@ file { '/app/kannel-smpp/kannel.conf':
     owner => 'root',
     group => 'root',
     mode  => '0644',
-    require => Package['kannel'],
-    before => Service['kannel'],
-    notify  => Service['kannel'],
   }
    file { '/app/kannel-smpp/box.conf':
     content => template('kannel/box.conf.erb'),
     owner => 'root',
     group => 'root',
     mode  => '0644',
-    require => Package['kannel'],
-    before => Service['kannel'],
-    notify  => Service['kannel'],
   }
    file { '/app/kannel-smpp/smppbox.conf':
     content => template('kannel/smppbox.conf.erb'),
     owner => 'root',
     group => 'root',
     mode  => '0644',
-    require => Package['kannel'],
-    before => Service['kannel'],
-    notify  => Service['kannel'],
   }
   }
 class backend {

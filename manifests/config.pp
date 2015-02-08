@@ -15,7 +15,7 @@ class kannel::config(
   $kannel_admin_pwd = foobar,
   $sms_stat_pwd = foobar,
   $hub_listen_port = 13012,
-  $smsbox_port = 15000,
+  $smsbox_port = "15000",
   $hub_http_address = "app28.dev1.whispir.net",
   $sendsms_port = 13013,
   $redis_ip = "10.1.161.95",
@@ -37,9 +37,6 @@ file { '/app/kannel-smpp/kannel.conf':
     owner => 'root',
     group => 'root',
     mode  => '0644',
-    require => Package['kannel'],
-    before => Service['kannel'],
-    notify  => Service['kannel'],
   }
    file { '/app/kannel-smpp/box.conf':
     content => template('kannel/box.conf.erb'),
@@ -47,9 +44,6 @@ file { '/app/kannel-smpp/kannel.conf':
     owner => 'root',
     group => 'root',
     mode  => '0644',
-    require => Package['kannel'],
-    before => Service['kannel'],
-    notify  => Service['kannel'],
   }
    file { '/app/kannel-smpp/smppbox.conf':
     content => template('kannel/smppbox.conf.erb'),
@@ -57,9 +51,6 @@ file { '/app/kannel-smpp/kannel.conf':
     owner => 'root',
     group => 'root',
     mode  => '0644',
-    require => Package['kannel'],
-    before => Service['kannel'],
-    notify  => Service['kannel'],
   }
   }
 class backend {
